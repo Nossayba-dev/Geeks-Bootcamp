@@ -127,6 +127,6 @@ function createCalendar(year, month) {
 
 
 
-console.log(createCalendar(2025, 12));
+console.log(createCalendar(2025, 6));
 
 
