@@ -25,7 +25,7 @@ function casefunction (str) {
 }
 console.log(casefunction('The Quick Brown Fox'));
 // Exercise 4 : Omnipresent value
-//method de Oussama
+//method 1
 function isOmnipresent(array , O){
 let cmp=0;
     for(let i=0;i<array.length;i++){
@@ -45,19 +45,16 @@ if(cmp>=array.length){
 }
 
 console.log(isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1],[7,1]], 1))
-// ma method
+// method 2
 function isOmnipresent(array , O){
-    let r
     for(let i=0; i<array.length; i++){
-        for(let j=0;j<2;j++){
-            if(O in array[i]){
-                r=true;
-            }else{
-                r=false;
+       
+            if( !array[i].includes(O)){
+                return false;
+        
             }
         }
-    }
-    return r
+    return true;
 }
 console.log(isOmnipresent([[1, 2], [1, 3], [5, 1], [6, 1],[7,1]], 1));
 // Exercise 5 : Red table
