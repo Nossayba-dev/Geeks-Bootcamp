@@ -5,8 +5,8 @@ function starBox(sentence) {
 
   console.log(border);
   for (const word of words) {
-    const padding = ' '.repeat(maxLength - word.length);
-    console.log(`* ${word}${padding} *`);
+    const padding = ' '.repeat((maxLength - word.length)/2);
+    console.log(`* ${padding}${word}${padding} *`);
   }
   console.log(border);
 }
