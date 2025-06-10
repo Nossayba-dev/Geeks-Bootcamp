@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emoji Guess Game</title>
+</head>
+<body>
+    <h1>Emoji Guess Game</h1>
+    <div id="game">
+        <div id="emoji"></div>
+        <form id="guessForm"></form>
+        <p id="feedback"></p>
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <script>
+        let currentEmoji = null;
+
+        function loadEmoji() {
+            fetch('/emoji')
+                .then(res => res.json())
+                .then(data => {
+                    currentEmoji = data.emoji;
+                    document.getElementById('emoji').textContent = data.emoji;
+                    const form = document.getElementById('guessForm');
+                    form.innerHTML = '';
+                    data.options.forEach(option => {
+                        const btn = document.createElement('button');
+                        btn.textContent = option;
+                        btn.type = 'submit';
+                        btn.value = option;
+                        btn.addEventListener('click', e => {
+                            e.preventDefault();
+                            makeGuess(option);
+                        });
+                        form.appendChild(btn);
+                    });
+                });
+        }
+
+        function makeGuess(guess) {
+            fetch('/guess', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ guess })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('feedback').textContent = `Your answer is ${data.result}!`;
+                    document.getElementById('score').textContent = data.score;
+                    setTimeout(loadEmoji, 1000);
+                });
+        }
+
+        loadEmoji();
+    </script>
+</body>
+</html>
