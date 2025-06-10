@@ -1,14 +1,4 @@
-select * from items
-order by price asc
-
-select * from items
-where price >= 80
-order by price desc
- 
-select first_name ,last_name from customers
-order by  first_name asc
-limit 3
-
-select last_name from customers
-order by  last_name desc
-
+SELECT * FROM items ORDER BY price
+SELECT * FROM items WHERE price>=80 ORDER BY price DESC
+SELECT nom,lastnom from customers  ORDER BY nom LIMIT 3 
+SELECT lastnom from customers ORDER BY lastnom DESC
