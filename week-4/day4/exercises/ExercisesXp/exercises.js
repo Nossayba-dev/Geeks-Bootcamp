@@ -22,11 +22,10 @@ const marioGame = {
   },
 };
 
-// Convert the JS object to a JSON string:
 const jsonMarioGame = JSON.stringify(marioGame);
 console.log(jsonMarioGame);
 
-// Pretty print the JSON:
+
 const prettyJsonMarioGame = JSON.stringify(marioGame, null, 2);
 console.log(prettyJsonMarioGame);
 
