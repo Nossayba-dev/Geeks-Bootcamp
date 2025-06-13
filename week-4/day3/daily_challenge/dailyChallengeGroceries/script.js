@@ -15,7 +15,7 @@ video1.watch();
 
 const video2 = new Video("CSS Flexbox Guide", "Bob", 420);
 video2.watch(); 
-
+//Bonus
 const videosData = [
   { title: "React Basics", uploader: "Carol", time: 600 },
   { title: "Node.js Intro", uploader: "Dave", time: 540 },
@@ -29,3 +29,75 @@ const videoInstances = videosData.map(
 );
 
 videoInstances.forEach(video => video.watch());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
