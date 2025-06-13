@@ -57,7 +57,6 @@ function getRandomMove() {
 }
 
 function getBestMove() {
-  // 1. Can AI win?
   for (let i = 0; i < board.length; i++) {
     if (board[i] === '') {
       board[i] = aiSymbol;
