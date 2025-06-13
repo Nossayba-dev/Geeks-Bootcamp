@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic Tac Toe AI</title>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+  <h1>Tic Tac Toe</h1>
+
+  <div id="symbol-selection">
+    <button onclick="chooseSymbol('X')">Play as X</button>
+    <button onclick="chooseSymbol('O')">Play as O</button>
+  </div>
+
+  <div id="level-selection" style="display:none;">
+    <button onclick="setLevel('easy')">Easy</button>
+    <button onclick="setLevel('hard')">Hard</button>
+  </div>
+
+  <div id="board" class="board">
+    <div class="cell" id="0" onclick="playerMove(0)"></div>
+    <div class="cell" id="1" onclick="playerMove(1)"></div>
+    <div class="cell" id="2" onclick="playerMove(2)"></div>
+    <div class="cell" id="3" onclick="playerMove(3)"></div>
+    <div class="cell" id="4" onclick="playerMove(4)"></div>
+    <div class="cell" id="5" onclick="playerMove(5)"></div>
+    <div class="cell" id="6" onclick="playerMove(6)"></div>
+    <div class="cell" id="7" onclick="playerMove(7)"></div>
+    <div class="cell" id="8" onclick="playerMove(8)"></div>
+  </div>
+
+  <p id="result"></p>
+  <button id="restart" onclick="restartGame()" style="display:none;">Restart</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
