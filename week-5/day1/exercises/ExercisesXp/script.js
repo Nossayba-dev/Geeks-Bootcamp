@@ -30,7 +30,6 @@ delaySuccess.then(message => console.log(message));
 // Exercice 3 
 Promise.resolve(3).then(value => console.log(value));
 
-// Promise rejetée avec le message "Boo!"
 Promise.reject("Boo!").catch(error => console.log(error));
 
 
