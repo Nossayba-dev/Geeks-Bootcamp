@@ -1,8 +1,6 @@
-// routes/quiz.js
 const express = require('express');
 const router = express.Router();
 
-// Sample hard-coded trivia questions and answers
 const triviaQuestions = [
   {
     id: 1,
@@ -27,28 +25,24 @@ const triviaQuestions = [
   {
     id: 5,
     question: "How many continents are there on Earth?",
-    answer: "7", // Or "Seven" depending on desired strictness
+    answer: "7", 
   },
 ];
 
-// --- In-memory quiz state for a single user ---
-// In a real application, this state would be managed per user session
 let quizState = {
     currentQuestionIndex: 0,
     score: 0,
     quizCompleted: false,
 };
 
-// Helper function to reset the quiz state
 const resetQuiz = () => {
     quizState.currentQuestionIndex = 0;
     quizState.score = 0;
     quizState.quizCompleted = false;
 };
 
-// GET /quiz: Start the quiz and display the first question.
 router.get('/', (req, res) => {
-    resetQuiz(); // Always reset on new GET /quiz to start fresh
+    resetQuiz(); 
 
     if (triviaQuestions.length === 0) {
         return res.status(500).json({ message: "No trivia questions available." });
@@ -62,7 +56,6 @@ router.get('/', (req, res) => {
     });
 });
 
-// POST /quiz: Submit an answer to the current question and move to the next question.
 router.post('/', (req, res) => {
     const userAnswer = req.body.answer;
 
@@ -79,7 +72,6 @@ router.post('/', (req, res) => {
     const currentQuestion = triviaQuestions[quizState.currentQuestionIndex];
 
     if (!currentQuestion) {
-        // This should ideally not happen if quizCompleted check works, but as a safeguard
         quizState.quizCompleted = true;
         return res.status(400).json({
             message: "No current question found. Quiz might be over or not started. Please GET /quiz/score to see your final score.",
@@ -87,20 +79,19 @@ router.post('/', (req, res) => {
         });
     }
 
-    // Compare case-insensitively
     const isCorrect = userAnswer.toString().trim().toLowerCase() === currentQuestion.answer.toLowerCase();
     let feedback = `Your answer "${userAnswer}" is `;
 
     if (isCorrect) {
         quizState.score++;
-        feedback += "CORRECT! 🎉";
+        feedback += "CORRECT! ";
     } else {
         feedback += `INCORRECT. The correct answer was "${currentQuestion.answer}". 😞`;
     }
 
-    quizState.currentQuestionIndex++; // Move to the next question
+    quizState.currentQuestionIndex++; 
 
-    // Check if there are more questions
+  
     if (quizState.currentQuestionIndex < triviaQuestions.length) {
         const nextQuestion = triviaQuestions[quizState.currentQuestionIndex];
         res.json({
@@ -115,12 +106,11 @@ router.post('/', (req, res) => {
             feedback: feedback,
             message: "Quiz completed! You've answered all questions.",
             finalScorePrompt: "Please GET /quiz/score to see your final results.",
-            currentScore: quizState.score // Show current score before the final score prompt
+            currentScore: quizState.score 
         });
     }
 });
 
-// GET /quiz/score: Display the user’s final score at the end of the quiz.
 router.get('/score', (req, res) => {
     if (!quizState.quizCompleted && quizState.currentQuestionIndex < triviaQuestions.length) {
         return res.status(400).json({

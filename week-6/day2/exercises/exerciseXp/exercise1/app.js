@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const indexRouter = require("./routes/index");
 
-app.use("/", indexRouter); // Mount the router
+app.use("/", indexRouter); 
 
 const PORT = 5000;
 app.listen(PORT, () => {
