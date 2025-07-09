@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.border {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 1rem;
+  background-color: rgb(111, 206, 131);
+  border: solid #ddd;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+
+
+.border p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.border span {
+  color: #52922d;
+  font-weight: bold;
+  text-decoration: underline;
+}
